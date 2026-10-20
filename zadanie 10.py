@@ -1,9 +1,12 @@
-ilosc_studentow = int(input("Podaj ilość studentów: "))
-for x in range(0, ilosc_studentow):
-    nazwisko = input("Podaj nazwisko: ")
-    punkty = int(input('Podaj liczbę punktów: '))
-    if punkty < 0:
-        ocena = 0
+liczba_studentów = int(input("Podaj liczbę studentów: "))
+liczba_zaliczen = 0
+for x in range(liczba_studentów):
+    nazwisko = input("Podaj nazwisko studenta: ")
+    punkty = int(input("Podaj liczbę punktów zdobytych przez studenta: "))
+   
+    if punkty < 0 or punkty > 100:
+        print("Nieprawidłowa liczba punktów.")
+        continue
     elif punkty < 50:
         ocena = 2
     elif punkty < 60:
@@ -16,17 +19,8 @@ for x in range(0, ilosc_studentow):
         ocena = 4.5
     elif punkty <= 100:
         ocena = 5
-    else:
-        ocena = 0
 
-    if ocena > 0:
-        print(nazwisko + 'posiada ' + str(punkty) + ' punktów i ma ocenę: ' + str(ocena))
-    else:
-        print('Nieprawidłowa liczba punktów')
+    if ocena >= 3:
+        liczba_zaliczen += 1
 
-
-    
-print('liczba studentów którzy zdali: ' + str(len([x for x in range(1, ilosc_studentow) if ocena > 3])))
-    
-
-
+print(f"Liczba zaliczeń: {liczba_zaliczen}")
